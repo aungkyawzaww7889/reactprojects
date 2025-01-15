@@ -11,7 +11,7 @@ const Faq = ({faq}) =>{
 
         // console.log(e.target.nextElementSibling);
         const getcontent = e.target.nextElementSibling;
-        console.log(getcontent);
+        // console.log(getcontent);
 
         if(getcontent.style.height){
             getcontent.style.height = null; //beware can't set 0
@@ -20,7 +20,7 @@ const Faq = ({faq}) =>{
         }
     }
 
-    console.log(clickHandler);
+    // console.log(clickHandler);
 
 
     return (
