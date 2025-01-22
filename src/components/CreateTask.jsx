@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import TaskContext from '../context/TaskContext';
 
-const CreateTask = ({addTask}) => {
+const CreateTask = () => {
 
     const [job,setJob] = useState("");
+    const {addTask} = useContext(TaskContext);
 
     const handleOnChange = (event)=>{
         setJob(event.target.value);
@@ -10,7 +12,12 @@ const CreateTask = ({addTask}) => {
 
     const clickHandler = ()=>{
         // console.log(job);
-        addTask(job);
+        const newTask = {
+            id: Date.now(),
+            task: job,
+            isDone: false,
+        }
+        addTask(newTask);
         setJob("");
     }
 

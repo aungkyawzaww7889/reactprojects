@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TaskContext from '../context/TaskContext';
 
-const Task = ({task,removeTask}) => {
+const Task = ({task:{id,task,isDone}}) => {
+
+    const {removeTask,doneTask} = useContext(TaskContext);
 
     const removeTaskBtn = () =>{
         if(confirm("Are You Sure To Delete")){
-            removeTask(task);
+            removeTask(id);
         }
+    }
+
+    const checkOnChange = () =>{
+        doneTask(id);
     }
     
     return (
         <div className='flex justify-between items-center border border-2 rounded-md px-3 py-2 mb-3'>
-        <p>{task}</p>
+        <div className='flex gap-3'>
+            <input type="checkbox" onChange={checkOnChange} checked={isDone} />
+            <p className={isDone ? "line-through" : ""}>{task}</p>
+        </div>
         <button className='bg-red-100 text-red-500 text-sm border-lg px-3 py-2 hover:bg-red-200' onClick={removeTaskBtn}>Delete</button>
         </div>
     )
