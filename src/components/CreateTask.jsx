@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import TaskContext from '../context/TaskContext';
+import useTaskStore from '../store/useTaskStore';
 
 const CreateTask = () => {
 
     const [job,setJob] = useState("");
-    const {addTask} = useContext(TaskContext);
+    // const {addTask} = useContext(TaskContext);
+    const {addTask} = useTaskStore();
 
     const handleOnChange = (event)=>{
         setJob(event.target.value);
